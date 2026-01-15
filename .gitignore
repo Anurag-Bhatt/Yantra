@@ -39,3 +39,10 @@
 
 # debug information files
 *.dwo
+
+# CMake Build Folders
+build/
+bin/
+lib/
+*.exe
+*.lib
