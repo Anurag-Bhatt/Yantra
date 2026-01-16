@@ -1,5 +1,20 @@
-#include <iostream>
+#include <Yantra.h>
 
-int main(){
-    return 0;
+class Sandbox : public Yantra::Application
+{
+public:
+    Sandbox()
+    {
+
+    }
+
+    ~Sandbox()
+    {
+
+    }
+};
+
+Yantra::Application* Yantra::CreateApplication()
+{
+    return new Sandbox();
 }
