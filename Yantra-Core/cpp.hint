@@ -1,0 +1,10 @@
+// cpp.hint
+// Specific macro definitions to help Visual Studio IntelliSense parser
+
+#define EVENT_CLASS_TYPE(type) \
+    static EventType GetStaticType(); \
+    virtual EventType GetEventType() const override; \
+    virtual const char* GetName() const override;
+
+#define EVENT_CLASS_CATEGORY(category) \
+    virtual int GetCategoryFlags() const override;
