@@ -3,6 +3,11 @@ project(Yantra-Core)
 
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS "src/*.cpp" "src/*.h")
 
+add_subdirectory(vendor/spdlog)
+
 add_library(Yantra-Core STATIC ${SOURCES})
 
 target_include_directories(Yantra-Core PUBLIC src)
+target_include_directories(Yantra-Core PUBLIC vendor/spdlog/include)
+
+target_link_libraries(Yantra-Core PUBLIC spdlog)

@@ -1,0 +1,3 @@
+[submodule "Yantra-Core/vendor/spdlog"]
+	path = Yantra-Core/vendor/spdlog
+	url = https://github.com/gabime/spdlog.git
