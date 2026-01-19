@@ -1,5 +1,5 @@
 #pragma once
-#include <cstdint>
+#include "yqpch.h"
 
 // Standard Primitive Types
 namespace Yantra{

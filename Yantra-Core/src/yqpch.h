@@ -1,0 +1,26 @@
+#pragma once
+
+// --- Standard Library ---
+#include <iostream>
+#include <memory>
+#include <utility>
+#include <algorithm>
+#include <functional>
+
+#include <cstdint>
+
+#include <string>
+#include <sstream>
+#include <vector>
+#include <unordered_map>
+#include <unordered_set>
+
+// --- Vendor Libraries ---
+#include <spdlog/spdlog.h>
+#include <spdlog/fmt/ostr.h>
+
+
+// --- Platform Specific ---
+#ifdef YANTRA_PLATFORM_WINDOWS
+	#include <Windows.h>
+#endif

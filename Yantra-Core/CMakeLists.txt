@@ -10,4 +10,6 @@ add_library(Yantra-Core STATIC ${SOURCES})
 target_include_directories(Yantra-Core PUBLIC src)
 target_include_directories(Yantra-Core PUBLIC vendor/spdlog/include)
 
+target_precompile_headers(Yantra-Core PRIVATE src/yqpch.h)
+
 target_link_libraries(Yantra-Core PUBLIC spdlog)

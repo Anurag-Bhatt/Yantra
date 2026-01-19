@@ -1,9 +1,7 @@
 #pragma once
 
 #include <Yantra/Core.h>
-#include <spdlog/spdlog.h>
-#include <spdlog/fmt/ostr.h>
-#include <memory>
+
 
 namespace Yantra {
 

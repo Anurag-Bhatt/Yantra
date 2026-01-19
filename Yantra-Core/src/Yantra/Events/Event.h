@@ -2,10 +2,6 @@
 
 #include <Yantra/Core.h>
 
-#include <string>
-#include <functional>
-#include <iostream>
-
 namespace Yantra {
 
 	enum class EventType {
