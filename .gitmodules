@@ -1,3 +1,6 @@
 [submodule "Yantra-Core/vendor/spdlog"]
 	path = Yantra-Core/vendor/spdlog
 	url = https://github.com/gabime/spdlog.git
+[submodule "Yantra-Core/vendor/GLFW"]
+	path = Yantra-Core/vendor/GLFW
+	url = https://github.com/glfw/glfw.git
