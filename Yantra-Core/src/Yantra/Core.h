@@ -28,13 +28,12 @@ namespace Yantra{
         #else
             #error "Yantra only supports x64 Windows!"
         #endif
-
-        #elif defined(__APPLE__) || defined(__MACH__)
-            #error "MacOS is not supported yet!"
-        #elif defined(__linux__)
-            #error "Linux is not supported yet!"
-        #else
-            #error "Unknown platform!"
+#elif defined(__APPLE__) || defined(__MACH__)
+    #error "MacOS is not supported yet!"
+#elif defined(__linux__)
+    #error "Linux is not supported yet!"
+#else
+    #error "Unknown platform!"
 #endif
 
 #ifdef YANTRA_PLATFORM_WINDOWS
@@ -52,3 +51,12 @@ namespace Yantra{
 #endif
 
 #define BIT(x) (1 << x)
+
+// Assertion
+#ifdef YANTRA_ENABLE_ASSERTS
+	#define YANTRA_ASSERT(x, ...) { if(!(x)) { YANTRA_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define YANTRA_CORE_ASSERT(x, ...) { if(!(x)) { YANTRA_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#else
+	#define YANTRA_ASSERT(x, ...)
+	#define YANTRA_CORE_ASSERT(x, ...)
+#endif
