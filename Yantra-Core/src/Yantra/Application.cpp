@@ -1,7 +1,7 @@
-#include "Yantra/Application.h"
-#include "Yantra/Log.h"
+#include "yqpch.h"
 
-#include <Yantra/Events/ApplicationEvent.h>
+#include "Application.h"
+#include "Log.h"
 
 
 namespace Yantra{
@@ -11,19 +11,7 @@ namespace Yantra{
         Log::Init();
         YANTRA_CORE_WARN("Yantra Initialized\n");
 
-        WindowResizeEvent e(1280, 720);
-
-        YANTRA_TRACE("{}", e);
-
-        if (e.IsInCategory(EventCategoryApplication)) {
-
-            YANTRA_INFO("Event: 'WindowResize' belongs to category Application!!");
-        }
-
-        if (e.IsInCategory(EventCategoryInput)) {
-            YANTRA_ERROR("This should not Print, WindowResize is not an Input Event");
-        }
-
+        m_Window = std::unique_ptr<Window>(Window::Create());
     }
 
     Application::~Application()
@@ -32,10 +20,12 @@ namespace Yantra{
 
     void Application::Run()
     {
-
-        while(true)
+        YANTRA_CORE_INFO("Starting Run Loop");
+        while(m_Running)
         {
-            break;
+            //YANTRA_CORE_INFO("Updating...");
+            m_Window->OnUpdate();
         }
+        YANTRA_CORE_INFO("Stopping Run Loop");
     }
 }
