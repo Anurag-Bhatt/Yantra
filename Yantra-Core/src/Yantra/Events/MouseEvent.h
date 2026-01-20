@@ -4,7 +4,7 @@
 
 namespace Yantra {
 
-	class YANTRA_API MouseMovedEvent : Event {
+	class YANTRA_API MouseMovedEvent : public Event {
 
 	public:
 		MouseMovedEvent(float x, float y) 
@@ -75,7 +75,7 @@ namespace Yantra {
 		{
 			std::stringstream ss;
 			ss << "MouseButtonPressedEvent: " << m_Button;
-			ss.str();
+			return ss.str();
 		}
 
 		EVENT_CLASS_TYPE(MouseButtonPressed)
@@ -91,7 +91,7 @@ namespace Yantra {
 		{
 			std::stringstream ss;
 			ss << "MouseButtonPressedEvent: " << m_Button;
-			ss.str();
+			return ss.str();
 		}
 
 		EVENT_CLASS_TYPE(MouseButtonReleased)

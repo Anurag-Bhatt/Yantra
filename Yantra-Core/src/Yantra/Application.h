@@ -1,8 +1,9 @@
 #pragma once
+#include "yqpch.h"
 #include "Yantra/Core.h"
-
 #include "Window.h"
-#include <memory>
+
+#include <Yantra/Events/ApplicationEvent.h>
 
 namespace Yantra{
 
@@ -14,7 +15,12 @@ namespace Yantra{
 
         void Run();
 
+        void OnEvent(Event& e);
+
     private:
+
+        bool OnWindowClose(WindowCloseEvent& e);
+
         std::unique_ptr<Window> m_Window;
         bool m_Running = true;
     };
