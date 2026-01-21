@@ -40,7 +40,7 @@ virtual const char* GetName() const override { return #type; }
 		{
 			return GetCategoryFlags() & category;
 		}
-	protected:
+	public:
 		bool m_Handled = false;
 	};
 
