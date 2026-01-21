@@ -4,3 +4,7 @@
 [submodule "Yantra-Core/vendor/GLFW"]
 	path = Yantra-Core/vendor/GLFW
 	url = https://github.com/glfw/glfw.git
+[submodule "Yantra-Core/vendor/imgui"]
+	path = Yantra-Core/vendor/imgui
+	url = https://github.com/ocornut/imgui.git
+	branch = docking
