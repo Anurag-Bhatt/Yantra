@@ -22,7 +22,7 @@ namespace Yantra {
 		std::vector<Layer*>::iterator end() { return m_Layers.end(); }
 
 	private:
-		std::vector<Layer*> m_Layers;
+		std::vector<Layer*> m_Layers{};
 		std::vector<Layer*>::iterator m_LayerInsert;
 	};
 }

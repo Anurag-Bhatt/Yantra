@@ -1,3 +1,4 @@
+#include "yqpch.h"
 #include "LayerStack.h"
 
 namespace Yantra{
@@ -21,7 +22,9 @@ namespace Yantra{
 
 	void LayerStack::PushOverlay(Layer* overlay)
 	{
+		size_t insertIndex = std::distance(m_Layers.begin(), m_LayerInsert);
 		m_Layers.emplace_back(overlay);
+		m_LayerInsert = m_Layers.begin() + insertIndex;
 	}
 
 	void LayerStack::PopLayer(Layer* layer)
