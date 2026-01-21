@@ -18,6 +18,8 @@ namespace Yantra {
 
 		inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
 
+		virtual void* GetNativeWindow() const override { return m_Window; }
+
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
 

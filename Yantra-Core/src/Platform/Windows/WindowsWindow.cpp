@@ -1,6 +1,9 @@
 #include "yqpch.h"
+
 #include "WindowsWindow.h"
 #include "Yantra/Log.h"
+
+#include <glad/glad.h>
 
 // Handling Events
 #include "Yantra/Events/ApplicationEvent.h"
@@ -36,10 +39,6 @@ namespace Yantra {
 	void WindowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
-
-		glClearColor(1.0f, 0.0f, 1.0f, 1.0f); // Red + Blue = Pink
-		glClear(GL_COLOR_BUFFER_BIT);
-
 		glfwSwapBuffers(m_Window);
 	}
 
@@ -78,6 +77,11 @@ namespace Yantra {
 			glfwSetErrorCallback(GLFWErrorCallback);
 
 			s_GLFWInitialized = true;
+
+			glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+			glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
+
+			glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);	
 		}
 
 		m_Window = glfwCreateWindow((int32)prop.width, (int32)prop.height, prop.Title.c_str(), nullptr, nullptr);
@@ -90,6 +94,15 @@ namespace Yantra {
 		}
 
 		glfwMakeContextCurrent(m_Window);
+
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		YANTRA_CORE_ASSERT(status, "Failed to initialized GLAD");
+
+		YANTRA_CORE_INFO("OpenGL GPU Info:");
+		YANTRA_CORE_INFO(" Vendor {0}", (const char*)glGetString(GL_VENDOR));
+		YANTRA_CORE_INFO(" Renderer {0}", (const char*)glGetString(GL_RENDERER));
+		YANTRA_CORE_INFO(" Version {0}", (const char*)glGetString(GL_VERSION));
+
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 
 		SetVSync(true);
