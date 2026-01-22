@@ -22,7 +22,7 @@ namespace Yantra{
         m_ImGuiLayer = new ImGuiLayer();
         PushOverlay(m_ImGuiLayer);
 
-        // Testing
+        // Testing - Red Color
         m_ClearCode[0] = 1.0f;
         m_ClearCode[1] = 0.0f;
         m_ClearCode[2] = 0.0f;
@@ -83,7 +83,6 @@ namespace Yantra{
             m_ImGuiLayer->End();
 
             m_Window->OnUpdate();
-            YANTRA_CORE_INFO("Clear Color:{} {} {} {}", m_ClearCode[0], m_ClearCode[1], m_ClearCode[2], m_ClearCode[3]);
         }
         YANTRA_CORE_TRACE("Stopping Run Loop");
     }

@@ -54,6 +54,8 @@ namespace Yantra {
 		Application& app = Application::Get();
 		GLFWwindow* window = static_cast<GLFWwindow*>(app.GetWindow().GetNativeWindow());
 
+		io.DisplaySize = ImVec2(app.GetWindow().GetWidth(), app.GetWindow().GetHeight());
+
 		ImGui_ImplGlfw_InitForOpenGL(window, true);
 		ImGui_ImplOpenGL3_Init("#version 410");
 	}
@@ -105,14 +107,20 @@ namespace Yantra {
 			ImGui::DockSpace(dockspaceID, ImVec2(0.0f, 0.0f), dockspace_flags);
 		}
 
-
+		
 		// ImGUI
 		ImGui::Begin("Settings");
+		ImGui::Text("Framerate: {%.1f}", ImGui::GetIO().Framerate);
 		float* color = Application::Get().GetClearColor();
 		ImGui::ColorEdit4("Clear Color", color, ImGuiColorEditFlags_Float);
 		ImGui::End();
 
 		ImGui::End();
+	}
+
+	void ImGuiLayer::OnUpdate()
+	{
+		
 	}
 
 	void ImGuiLayer::Begin()
