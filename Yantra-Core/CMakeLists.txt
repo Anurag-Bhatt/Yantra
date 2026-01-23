@@ -35,6 +35,7 @@ target_include_directories(Yantra-Core PUBLIC
     vendor/spdlog/include
     vendor/GLAD/include
     vendor/imgui
+    vendor/GLM
 )
 
 target_include_directories(Yantra-Core PRIVATE
