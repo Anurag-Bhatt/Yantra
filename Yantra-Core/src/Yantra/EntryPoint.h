@@ -2,18 +2,17 @@
 
 #include "Yantra/Core.h"
 
-#ifdef YANTRA_PLATFORM_WINDOWS
+#if defined(YANTRA_PLATFORM_WINDOWS) || defined(YANTRA_PLATFORM_LINUX)
 
-extern Yantra::Application* Yantra::CreateApplication();
+extern Yantra::Application *Yantra::CreateApplication();
 
-int main()
-{
-    auto app = Yantra::CreateApplication();
+int main() {
+  auto app = Yantra::CreateApplication();
 
-    app->Run();
+  app->Run();
 
-    delete app;
-    return 0;
+  delete app;
+  return 0;
 }
 
 #endif

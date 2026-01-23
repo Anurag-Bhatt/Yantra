@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.16)
 project(Yantra-Core)
 
+find_package(OpenGL REQUIRED)
+
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
@@ -33,7 +35,7 @@ target_include_directories(Yantra-Core PUBLIC
     vendor/spdlog/include
     vendor/GLAD/include
     vendor/imgui
-    )
+)
 
 target_include_directories(Yantra-Core PRIVATE
     vendor/GLFW/include
@@ -50,7 +52,7 @@ target_compile_definitions(Yantra-Core PUBLIC
     GLFW_INCLUDE_NONE
 )
 
-target_link_libraries(Yantra-Core PRIVATE glfw opengl32)
+target_link_libraries(Yantra-Core PRIVATE glfw OpenGL::GL)
 target_link_libraries(Yantra-Core PUBLIC spdlog)
 
 if(MSVC)
