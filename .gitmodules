@@ -8,3 +8,6 @@
 	path = Yantra-Core/vendor/imgui
 	url = https://github.com/ocornut/imgui.git
 	branch = docking
+[submodule "Yantra-Core/vendor/GLM"]
+	path = Yantra-Core/vendor/GLM
+	url = https://github.com/g-truc/glm.git

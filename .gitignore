@@ -51,6 +51,6 @@ lib/
 .idea/
 .cache/
 compile_commands.json
-
+imgui.ini
 .DS_Store
 
