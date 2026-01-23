@@ -46,3 +46,11 @@ bin/
 lib/
 *.exe
 *.lib
+
+.vscode/
+.idea/
+.cache/
+compile_commands.json
+
+.DS_Store
+
