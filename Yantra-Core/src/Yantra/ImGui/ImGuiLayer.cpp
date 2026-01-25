@@ -101,13 +101,6 @@ void ImGuiLayer::OnImGuiRender() {
     ImGui::DockSpace(dockspaceID, ImVec2(0.0f, 0.0f), dockspace_flags);
   }
 
-  // ImGUI
-  ImGui::Begin("Settings");
-  ImGui::Text("Framerate: {%.1f}", ImGui::GetIO().Framerate);
-  float *color = Application::Get().GetClearColor();
-  ImGui::ColorEdit4("Clear Color", color, ImGuiColorEditFlags_Float);
-  ImGui::End();
-
   ImGui::End();
 }
 

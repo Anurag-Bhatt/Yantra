@@ -4,45 +4,42 @@
 #include "Yantra/Core.h"
 
 #include "Window.h"
-#include <Yantra/LayerStack.h>
 #include "Yantra/Events/Event.h"
 #include <Yantra/Events/ApplicationEvent.h>
+#include <Yantra/LayerStack.h>
 
 #include <Yantra/ImGui/ImGuiLayer.h>
 
-namespace Yantra{
+namespace Yantra {
 
-    class YANTRA_API Application
-    {
-    public:
-        Application();
-        virtual ~Application();
+class YANTRA_API Application {
+public:
+  Application();
+  virtual ~Application();
 
-        void Run();
+  void Run();
 
-        void OnEvent(Event& e);
+  void OnEvent(Event &e);
 
-        void PushLayer(Layer* layer);
-        void PushOverlay(Layer* layer);
+  void PushLayer(Layer *layer);
+  void PushOverlay(Layer *layer);
 
-        inline Window& GetWindow() { return *m_Window; }
-        static inline Application& Get() { return *s_Instance; }
-        float* GetClearColor() { return m_ClearCode; }
+  inline Window &GetWindow() { return *m_Window; }
+  static inline Application &Get() { return *s_Instance; }
 
-    private:
-        bool OnWindowClose(WindowCloseEvent& e);
+private:
+  bool OnWindowClose(WindowCloseEvent &e);
 
-        bool m_Running = true;
-        LayerStack m_LayerStack;
+  bool m_Running = true;
+  LayerStack m_LayerStack;
 
-        ImGuiLayer* m_ImGuiLayer;
-        std::unique_ptr<Window> m_Window;
-        static Application* s_Instance;
+  ImGuiLayer *m_ImGuiLayer;
+  std::unique_ptr<Window> m_Window;
+  static Application *s_Instance;
 
-        float m_LastFrameTime = 0.0f;
-        float m_ClearCode[4] = {1.0f, 0.0f, 1.0f, 1.0f};
-    };
+  float m_LastFrameTime = 0.0f;
+};
 
-    // Client Side
-    Application* CreateApplication();
-}
+// Client Side
+Application *CreateApplication();
+} // namespace Yantra
