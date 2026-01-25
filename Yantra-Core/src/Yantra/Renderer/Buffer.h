@@ -8,6 +8,10 @@
 
 namespace Yantra {
 
+#ifdef None
+#undef None
+#endif // None
+
 enum class ShaderDataType {
   None = 0,
   Float,
