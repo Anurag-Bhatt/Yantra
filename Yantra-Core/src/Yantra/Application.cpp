@@ -1,5 +1,7 @@
 #include "Application.h"
+#include "GLFW/glfw3.h"
 #include "Log.h"
+#include "Yantra/Timestep.h"
 #include "yqpch.h"
 
 namespace Yantra {
@@ -54,8 +56,12 @@ void Application::Run() {
   while (m_Running) {
     // Using ImGui to send bg color to render
 
+    float time = (float)glfwGetTime();
+    TimeStep ts = time - m_LastFrameTime;
+    m_LastFrameTime = time;
+
     for (Layer *layer : m_LayerStack) {
-      layer->OnUpdate();
+      layer->OnUpdate(ts);
     }
 
     m_ImGuiLayer->Begin();

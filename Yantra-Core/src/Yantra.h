@@ -5,6 +5,7 @@
 #include "Yantra/Core.h"
 #include "Yantra/Layer.h"
 #include "Yantra/Log.h"
+#include "Yantra/Timestep.h"
 
 #include "Yantra/Input.h"
 #include "Yantra/Keycodes.h"

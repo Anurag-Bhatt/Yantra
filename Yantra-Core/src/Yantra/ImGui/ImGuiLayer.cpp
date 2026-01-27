@@ -1,4 +1,5 @@
 #include "ImGuiLayer.h"
+#include "Yantra/Timestep.h"
 #include "yqpch.h"
 
 #include <backends/imgui_impl_glfw.h>
@@ -104,7 +105,7 @@ void ImGuiLayer::OnImGuiRender() {
   ImGui::End();
 }
 
-void ImGuiLayer::OnUpdate() {}
+void ImGuiLayer::OnUpdate(TimeStep ts) {}
 
 void ImGuiLayer::Begin() {
   ImGui_ImplOpenGL3_NewFrame();

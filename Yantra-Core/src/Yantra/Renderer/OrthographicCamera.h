@@ -1,5 +1,6 @@
 #pragma once
 
+#include "glm/ext/matrix_clip_space.hpp"
 #include "glm/ext/matrix_float4x4.hpp"
 #include <glm/glm.hpp>
 
@@ -7,7 +8,7 @@ namespace Yantra {
 
 class OrthographicCamera {
 public:
-  OrthographicCamera(float left, float right, float top, float bottom);
+  OrthographicCamera(float left, float right, float bottom, float top);
 
   void SetPosition(const glm::vec3 &position) {
     m_Position = position;
@@ -26,6 +27,8 @@ public:
   const glm::mat4 &GetViewProjectionMatrix() const {
     return m_ViewProjectionMatrix;
   }
+
+  void SetProjectionMatrix(float left, float right, float bottom, float top);
 
 private:
   void RecalculateViewMatrix();

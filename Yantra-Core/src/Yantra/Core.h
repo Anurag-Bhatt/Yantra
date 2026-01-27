@@ -1,7 +1,10 @@
 #pragma once
 #include <cstdint>
+#include <functional>
 // Standard Primitive Types
 namespace Yantra {
+
+#define YANTRA_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
 
 // Unsigned ints
 using uint8 = uint8_t;
