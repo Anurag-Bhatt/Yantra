@@ -1,9 +1,11 @@
-#include "glm/ext/vector_float3.hpp"
+#include "Yantra/Renderer/RenderCommand.h"
+#include "Yantra/Renderer/Renderer.h"
+#include "glm/ext/matrix_float4x4.hpp"
 #include "glm/gtc/type_ptr.hpp"
-#include "imgui.h"
 #include <GLFW/glfw3.h>
 #include <Yantra.h>
 #include <Yantra/Core.h>
+#include <Yantra/Renderer/OrthographicCamera.h>
 #include <glad/glad.h>
 #include <glm/gtc/matrix_transform.hpp>
 #include <imgui.h>
@@ -11,7 +13,7 @@
 
 class ExampleLayer : public Yantra::Layer {
 public:
-  ExampleLayer() : Layer("Example") {
+  ExampleLayer() : Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f) {
     m_VertexArray.reset(Yantra::VertexArray::Create());
 
     float vertices[3 * 3] = {
@@ -51,23 +53,23 @@ public:
     void main() {
     color = vec4(u_Color, 1.0);
     })";
+
     m_Shader.reset(Yantra::Shader::Create(vertexSrc, fragmentSrc));
   }
 
   void OnUpdate() override {
 
-    glClearColor(m_BackgroundColor[0], m_BackgroundColor[1],
-                 m_BackgroundColor[2], 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
+    // Set Background
+    Yantra::RenderCommand::SetClearColor(glm::vec4(m_BackgroundColor, 1.0f));
+    Yantra::RenderCommand::Clear();
+
+    Yantra::Renderer::BeginScene(m_Camera);
 
     m_Shader->Bind();
-
     m_Shader->UploadUniformFloat3("u_Color", m_TriangleColor);
 
-    m_VertexArray->Bind();
-
-    glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(),
-                   GL_UNSIGNED_INT, nullptr);
+    Yantra::Renderer::Submit(m_Shader, m_VertexArray, glm::mat4(1.0f));
+    Yantra::Renderer::EndScene();
   }
 
   virtual void OnImGuiRender() override {
@@ -77,11 +79,15 @@ public:
     ImGui::End();
   }
 
-  void OnEvent(Yantra::Event &event) override { YANTRA_TRACE("{0}", event); }
+  void OnEvent(Yantra::Event &event) override {
+    // YANTRA_TRACE("{0}", event);
+  }
 
 private:
   std::shared_ptr<Yantra::Shader> m_Shader;
   std::shared_ptr<Yantra::VertexArray> m_VertexArray;
+
+  Yantra::OrthographicCamera m_Camera;
 
   // color
   glm::vec3 m_TriangleColor = {0.4f, 0.3f, 0.6f};

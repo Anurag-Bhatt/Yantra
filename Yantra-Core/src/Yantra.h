@@ -14,6 +14,8 @@
 
 // --- Renderer ---
 #include "Yantra/Renderer/Buffer.h"
+#include "Yantra/Renderer/RenderCommand.h"
+#include "Yantra/Renderer/Renderer.h"
 #include "Yantra/Renderer/Shader.h"
 #include "Yantra/Renderer/VertexArray.h"
 
