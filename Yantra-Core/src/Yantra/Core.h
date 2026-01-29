@@ -1,4 +1,6 @@
 #pragma once
+#include "Base.h"
+#include "Log.h"
 #include <cstdint>
 #include <functional>
 // Standard Primitive Types
@@ -19,40 +21,6 @@ using int16 = int16_t;
 using int32 = int32_t;
 using int64 = int64_t;
 } // namespace Yantra
-
-/*
- *   Platform Detection
- *   _WIN32 is defined for both 32-bit and 64-bit environments
- */
-#ifdef _WIN32
-#ifdef _WIN64
-#define YANTRA_PLATFORM_WINDOWS
-#else
-#error "Yantra only supports x64 Windows!"
-#endif
-#elif defined(__APPLE__) || defined(__MACH__)
-#error "MacOS is not supported yet!"
-#elif defined(__linux__)
-#define YANTRA_PLATFORM_LINUX
-#else
-#error "Unknown platform!"
-#endif
-
-#ifdef YANTRA_PLATFORM_WINDOWS
-#if YANTRA_DYNAMIC_LINK
-#ifdef YANTRA_BUILD_DLL
-#define YANTRA_API __declspec(dllexport)
-#else
-#define YANTRA_API __declspec(dllimport)
-#endif
-#else
-#define YANTRA_API
-#endif
-#elif defined(YANTRA_PLATFORM_LINUX)
-#define YANTRA_API __attribute__((visibility("default")))
-#else
-#define YANTRA_API
-#endif
 
 #define BIT(x) (1 << x)
 

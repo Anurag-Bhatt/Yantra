@@ -14,6 +14,7 @@ add_subdirectory(vendor/spdlog)
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
  "src/*.cpp" "src/*.h"
  "vendor/GLAD/src/glad.c"
+ "vendor/stb_image/stb_image.cpp"
  "vendor/imgui/imgui.cpp"
  "vendor/imgui/imgui_demo.cpp"
  "vendor/imgui/imgui_draw.cpp"
@@ -36,6 +37,7 @@ target_include_directories(Yantra-Core PUBLIC
     vendor/GLAD/include
     vendor/imgui
     vendor/GLM
+    vendor/stb_image
 )
 
 target_include_directories(Yantra-Core PRIVATE

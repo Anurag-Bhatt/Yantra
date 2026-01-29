@@ -2,7 +2,6 @@
 #include "GLFW/glfw3.h"
 #include "Log.h"
 #include "Yantra/Timestep.h"
-#include "yqpch.h"
 
 namespace Yantra {
 
@@ -53,6 +52,7 @@ void Application::OnEvent(Event &e) {
 
 void Application::Run() {
   // YANTRA_CORE_TRACE("Starting Run Loop");
+
   while (m_Running) {
     // Using ImGui to send bg color to render
 

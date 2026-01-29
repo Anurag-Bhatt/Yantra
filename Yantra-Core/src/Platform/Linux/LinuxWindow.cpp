@@ -1,3 +1,4 @@
+#include "GLFW/glfw3.h"
 #include "yqpch.h"
 
 #ifdef __linux__
@@ -60,6 +61,10 @@ void LinuxWindow::Init(const WindowProps &props) {
   YANTRA_CORE_INFO("  Vendor: {0}", (const char *)glGetString(GL_VENDOR));
   YANTRA_CORE_INFO("  Renderer: {0}", (const char *)glGetString(GL_RENDERER));
   YANTRA_CORE_INFO("  Version: {0}", (const char *)glGetString(GL_VERSION));
+
+  glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+  glClear(GL_COLOR_BUFFER_BIT);
+  glfwSwapBuffers(m_Window);
 
   glfwSetWindowUserPointer(m_Window, &m_Data);
   SetVSync(true);

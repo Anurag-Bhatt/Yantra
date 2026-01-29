@@ -1,8 +1,10 @@
 #pragma once
 
-#include "Yantra/Core.h"
-#include "yqpch.h"
+#include "Base.h"
+
 #include <memory>
+#include <spdlog/fmt/ostr.h>
+#include <spdlog/spdlog.h>
 
 namespace Yantra {
 
