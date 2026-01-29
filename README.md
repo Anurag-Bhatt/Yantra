@@ -28,7 +28,7 @@ Currently, the engine supports the following systems:
 
 | Renderer Test | ImGui Integration |
 |:---:|:---:|
-| ![Example_1_Yellow_Hearts](assets/readme/Yellow_Heart_ss.jpg) | ![Example_2_CheckerBoard](assets/readme/CheckerBoard_ss.jpg) |
+| ![Example_1_Yellow_Hearts](assets/readme/Yellow_Heart_ss.png) | ![Example_2_CheckerBoard](assets/readme/CheckerBoard_ss.png) |
 | *Current State: Rendering textured quads with transparency* | *Debug overlay using ImGui* |
 
 ## Tech Stack
